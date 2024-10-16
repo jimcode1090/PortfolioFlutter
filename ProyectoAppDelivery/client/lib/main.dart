@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:client/src/pages/login/login_page.dart';
+import 'package:client/src/pages/register/register_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +17,6 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
   }
 
@@ -26,7 +26,10 @@ class _MyAppState extends State<MyApp> {
       title: 'Delivery Udemy',
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
-      getPages: [GetPage(name: '/', page: () => const LoginPage())],
+      getPages: [
+        GetPage(name: '/', page: () => LoginPage()),
+        GetPage(name: '/register', page: () => RegisterPage()),
+      ],
       navigatorKey: Get.key,
       theme: ThemeData(
           primaryColor: Colors.amber,
@@ -34,8 +37,8 @@ class _MyAppState extends State<MyApp> {
               primary: Colors.amber,
               secondary: Colors.amberAccent,
               brightness: Brightness.light,
-              onPrimary: Colors.grey,
-              surface: Colors.grey,
+              onPrimary: Colors.white,
+              surface: Colors.white,
               onSurface: Colors.grey,
               error: Colors.grey,
               onError: Colors.grey,

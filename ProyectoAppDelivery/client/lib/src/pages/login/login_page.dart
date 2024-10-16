@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
+import 'package:get/get.dart';
+import 'package:client/src/pages/login/login_controller.dart';
 
 class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+  LoginController controller = Get.put(LoginController());
+
+  LoginPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +69,7 @@ class LoginPage extends StatelessWidget {
 
   Widget _textYouInfo() {
     return Container(
-        margin: EdgeInsets.only(top: 40, bottom: 50),
+        margin: const EdgeInsets.only(top: 40, bottom: 50),
         child: const Text(
           "INGRESA TUS CREDENCIALES",
           style: TextStyle(color: Colors.black),
@@ -76,7 +79,8 @@ class LoginPage extends StatelessWidget {
   Widget _textFieldEmail() {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 40),
-      child: const TextField(
+      child: TextField(
+        controller: controller.emailController,
         keyboardType: TextInputType.emailAddress,
         decoration: InputDecoration(
             hintText: 'Correo electrónico',
@@ -88,9 +92,10 @@ class LoginPage extends StatelessWidget {
   Widget _textFieldPassword() {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 40),
-      child: const TextField(
+      child: TextField(
+        controller: controller.passwordController,
         keyboardType: TextInputType.text,
-        obscureText: false,
+        obscureText: true,
         decoration: InputDecoration(
             hintText: 'Contraseña', prefixIcon: Icon(Icons.lock_outline)),
       ),
@@ -102,9 +107,9 @@ class LoginPage extends StatelessWidget {
       width: double.infinity,
       margin: const EdgeInsets.symmetric(horizontal: 40, vertical: 40),
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: () => controller.login(),
         style: ElevatedButton.styleFrom(
-            padding: EdgeInsets.symmetric(vertical: 15)),
+            padding: const EdgeInsets.symmetric(vertical: 15)),
         child: const Text(
           "INGRESAR",
           style: TextStyle(color: Colors.black),
@@ -114,18 +119,21 @@ class LoginPage extends StatelessWidget {
   }
 
   Widget _textDontHaveAccount() {
-    return const Row(
+    return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text(
+        const Text(
           "No tienes una cuenta?",
           style: TextStyle(color: Colors.black, fontSize: 15),
         ),
-        SizedBox(width: 7),
-        Text(
-          "Registrate Aqui!",
-          style: TextStyle(
-              color: Colors.amber, fontWeight: FontWeight.bold, fontSize: 15),
+        const SizedBox(width: 7),
+        GestureDetector(
+          onTap: () => controller.goToRegisterPage(),
+          child: const Text(
+            "Regístrate Aquí!",
+            style: TextStyle(
+                color: Colors.amber, fontWeight: FontWeight.bold, fontSize: 15),
+          ),
         )
       ],
     );
