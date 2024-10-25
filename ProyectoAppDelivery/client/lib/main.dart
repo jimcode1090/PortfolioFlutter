@@ -42,7 +42,8 @@ class _MyAppState extends State<MyApp> {
               onSurface: Colors.grey,
               error: Colors.grey,
               onError: Colors.grey,
-              onSecondary: Colors.grey)),
+              onSecondary: Colors.grey)
+      ),
     );
   }
 }

@@ -138,7 +138,7 @@ class RegisterPage extends StatelessWidget {
       child: TextField(
         controller: controller.passwordController,
         keyboardType: TextInputType.text,
-        obscureText: false,
+        obscureText: true,
         decoration: const InputDecoration(
             hintText: 'Contraseña', prefixIcon: Icon(Icons.lock_outline)),
       ),
@@ -151,7 +151,7 @@ class RegisterPage extends StatelessWidget {
       child: TextField(
         controller: controller.confirmPasswordController,
         keyboardType: TextInputType.text,
-        obscureText: false,
+        obscureText: true,
         decoration: InputDecoration(
             hintText: 'Confimar Contraseña', prefixIcon: Icon(Icons.lock)),
       ),
