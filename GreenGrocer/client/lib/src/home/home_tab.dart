@@ -2,7 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:client/src/config/custom_colors.dart';
 
 class HomeTab extends StatelessWidget {
-  const HomeTab({super.key});
+  HomeTab({super.key});
+
+  List<String> categories = [
+    'Frutas',
+    'Verduras',
+    'Legumbres',
+    'Carnes',
+    'Cereales',
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -61,8 +69,53 @@ class HomeTab extends StatelessWidget {
       ),
 
       // Campo de búsqueda
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 20,
+              vertical: 10,
+            ),
+            child: TextFormField(
+              decoration: InputDecoration(
+                filled: true,
+                fillColor: Colors.white,
+                isDense: true,
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(60),
+                  borderSide: const BorderSide(
+                    width: 0,
+                    style: BorderStyle.none,
+                  ),
+                ),
+                prefixIcon: Icon(
+                  Icons.search,
+                  color: CustomColors.customContrastColor,
+                  size: 21,
+                ),
+                suffixIcon: IconButton(
+                  onPressed: () {},
+                  icon: const Icon(Icons.tune),
+                ),
+                hintText: 'Buscar productos',
+                hintStyle: TextStyle(
+                  color: Colors.grey.shade400,
+                  fontSize: 14,
+                ),
+              ),
+            ),
+          ),
+
+          ListView.separated(
+            itemBuilder: null,
+            separatorBuilder: (_, index) => const SizedBox(width: 10),
+            itemCount: categories.length,
+          )
+        ],
+      ),
 
       // Categorías
+
 
       // Grid de productos
     );
