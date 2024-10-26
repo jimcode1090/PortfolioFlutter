@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:widgets_app/pages/home_page.dart';
 
 void main() => runApp(const MyApp());
@@ -8,13 +9,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        useMaterial3: true,
-        colorSchemeSeed: Colors.blue
-      ),
-      home: const HomePage()
-    );
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
+
+    return const MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: HomePage());
   }
 }

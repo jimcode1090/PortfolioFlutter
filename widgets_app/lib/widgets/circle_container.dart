@@ -5,8 +5,8 @@ class CircleContainer extends StatelessWidget {
   final double width, height;
 
   const CircleContainer({super.key, required this.child, required this.width, required this.height})
-  : assert(width >= 100, 'width must be greater than 100'),
-  assert(height >= 100, 'height must be greater than 100');
+  : assert(width >= 50, 'width must be greater than 50'),
+  assert(height >= 50, 'height must be greater than 50');
 
   @override
   Widget build(BuildContext context) {

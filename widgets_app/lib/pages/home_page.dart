@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:widgets_app/widgets/avartar.dart';
+import 'package:widgets_app/widgets/bottom_menu.dart';
 import 'package:widgets_app/widgets/circle_container.dart';
-import 'package:widgets_app/widgets/text_custom.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -9,23 +9,56 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Home Page'),
+      backgroundColor: Colors.white,
+      bottomNavigationBar: BottomMenu(items: const [
+          BottomMenuItem(iconPath: 'assets/icons/menu.svg', label: 'Inicio'),
+          BottomMenuItem(iconPath: 'assets/icons/history.svg', label: 'Noticias'),
+          BottomMenuItem(iconPath: 'assets/icons/notice.svg', label: 'Historial'),
+          BottomMenuItem(iconPath: 'assets/icons/profile.svg', label: 'Mi Perfil'),
+        ],
       ),
-      body: const Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            TextCustom(),
-            SizedBox(
-              height: 30,
+      body: SafeArea(
+          top: true,
+          bottom: true,
+          child: Container(
+            width: double.infinity,
+            color: const Color(0xffeeeeee),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                const Avatar(),
+                const SizedBox(height: 20),
+                const Text("Bienvenido"),
+                const Text(
+                  "Jimmy Niels Paytan Villavicencio",
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+                Container(
+                  height: 1,
+                  width: 100,
+                  margin: const EdgeInsets.symmetric(vertical: 20),
+                  color: const Color(0Xffaaaaaa),
+                ),
+                const Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    CircleContainer(
+                      width: 55,
+                      height: 55,
+                      child: Icon(Icons.add),
+                    ),
+                    CircleContainer(
+                      width: 55,
+                      height: 55,
+                      child: Icon(Icons.remove),
+                    ),
+                  ],
+                ),
+              ],
             ),
-            CircleContainer(width: 100, height: 100,child: Text("Hola", style: TextStyle(fontSize: 30)),),
-            CircleContainer(width: 100, height: 100,child: Icon(Icons.phone, size: 60, color: Colors.green,)),
-            CircleContainer(width: 100, height: 100,child: Icon(CupertinoIcons.phone, size: 60, color: Colors.green,)),
-          ],
-        ),
-      ),
+          )),
     );
   }
 }
